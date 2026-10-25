@@ -13,6 +13,7 @@ class NEPSEAI:
 
     def load(self):
         self.df = dataframe(self.dataset)
+        print(self.df)
         return self.df
         
     def info(self):
@@ -25,9 +26,9 @@ class NEPSEAI:
         
     def run(self):
         self.load()
-        report = self.info()
-        return report
+        # report = self.info()
+        # return report
 
 
-pipeline = NEPSEAI("DATA")
+pipeline = NEPSEAI(DATA_DIR)
 pipeline.run()
