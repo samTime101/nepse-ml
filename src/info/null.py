@@ -1,2 +1,2 @@
-def null(dataset):
-    return "null"
+def null(df):
+    return df.isnull().sum()

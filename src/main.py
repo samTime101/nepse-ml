@@ -1,8 +1,8 @@
 # eeuta template matra ho, for pipeline
 from info.dataframe import dataframe
-from info.dimension import dimension
 from info.null import null
-from info.duplicates import duplcates
+from info.dimension import dimension
+from info.duplicates import duplicates
 
 DATA_DIR = "data"
 
@@ -18,7 +18,7 @@ class NEPSEAI:
         
     def info(self):
         null_info = null(self.df)
-        duplicates_info = duplcates(self.df)
+        duplicates_info = duplicates(self.df)
         dimension_info = dimension(self.df)
         print(null_info)
         print(duplicates_info)
@@ -26,8 +26,7 @@ class NEPSEAI:
         
     def run(self):
         self.load()
-        # report = self.info()
-        # return report
+        self.info()
 
 
 pipeline = NEPSEAI(DATA_DIR)

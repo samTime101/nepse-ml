@@ -1,2 +1,2 @@
-def dimension(dataset):
-    return "dimension"
+def dimension(df):
+    return df.shape
