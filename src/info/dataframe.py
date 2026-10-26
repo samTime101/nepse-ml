@@ -1,6 +1,8 @@
 from pathlib import Path
 import pandas as pd
 
+from definitions import KEY_COLUMNS
+
 def dataframe(dataset):
     files = sorted(Path(dataset).glob("*.csv"))
     if not files:
@@ -17,5 +19,5 @@ def dataframe(dataset):
     df["published_date"] = pd.to_datetime(df["published_date"])
 
     # reset index and sort by symbol and published_date
-    df = df.sort_values(["symbol", "published_date"]).reset_index(drop=True)
+    df = df.sort_values(KEY_COLUMNS).reset_index(drop=True)
     return df
