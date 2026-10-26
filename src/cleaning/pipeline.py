@@ -1,6 +1,4 @@
-"""Cleaning pipeline stages."""
-
-from checks import duplicate_group_mask, invalid_price_mask, missing_row_mask
+from checks import duplicate_group_mask, invalid_price_mask, missing_row_mask,ohlc_violation_mask
 from cleaning.columns import standardize_columns, standardize_symbols
 from cleaning.duplicates import drop_duplicate_rows
 from cleaning.export import export_rejected_data
@@ -34,6 +32,12 @@ def invalid(df, output_dir="cleaned"):
     rejected_df = df[invalid_price_mask(df)]
     export_rejected_data(rejected_df, output_dir, "invalid_prices")
     return drop_invalid_prices(df)
+
+
+def ohlcviolation(df, output_dir="cleaned"):
+    rejected_df = df[ohlc_violation_mask(df)]
+    export_rejected_data(sort_rows(rejected_df), output_dir, "ohlc_violations")
+    return df
 
 
 def sort(df):

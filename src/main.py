@@ -1,7 +1,7 @@
 # eeuta template matra ho, for pipeline
 from info.dataframe import dataframe
 from info.pipeline import info
-from cleaning.pipeline import standarize, missing, duplicates, invalid, sort
+from cleaning.pipeline import standarize, missing, duplicates, invalid, ohlcviolation, sort
 from cleaning.export import export_cleaned_data
 
 DATA_DIR = "data"
@@ -24,6 +24,7 @@ class NEPSEAI:
         clean_df = missing(clean_df)
         clean_df = duplicates(clean_df)
         clean_df = invalid(clean_df)
+        clean_df = ohlcviolation(clean_df)
         self.clean_df = sort(clean_df)
         return self.clean_df
 
